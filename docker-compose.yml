@@ -8,9 +8,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     volumes:
       - .:/app
+    depends_on:
+      - db
     command:
       [
-        "echo alo",
+        "./wait-for-it.sh",
+        "${DB_HOST}:${DB_PORT}",
+        "-t",
+        "120",
+        "--",
+        "./start.sh",
       ]
