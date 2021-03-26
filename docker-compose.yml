@@ -14,6 +14,8 @@ services:
       - .:/app
     depends_on:
       - db
+    ports:
+      - "${DJANGO_BIND_PORT}:${DJANGO_BIND_PORT}"
     command:
       [
         "./wait-for-it.sh",
