@@ -1,17 +1,15 @@
 version: "3.5"
 services:
 
-   app:
+  db:
+    image: postgres:10.1-alpine
+
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-#    env_file: .env
     volumes:
       - .:/app
-#    ports:
-#      - "${DJANGO_BIND_PORT}:${DJANGO_BIND_PORT}"
-#    depends_on:
-#      - db
     command:
       [
         "echo alo",
