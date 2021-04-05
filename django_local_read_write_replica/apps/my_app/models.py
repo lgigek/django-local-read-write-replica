@@ -13,4 +13,4 @@ class StandardModelMixin(models.Model):
 
 
 class Message(StandardModelMixin):
-    text: models.CharField(max_length=200, blank=False, null=False)
+    text = models.CharField(max_length=200, blank=False, null=False)
