@@ -72,6 +72,8 @@ if eval_env_as_bool(os.getenv("DB_USE_REPLICA")):
         "PORT": os.getenv("DB_PORT_REPLICA"),
         "PASSWORD": os.getenv("DB_PASSWORD_REPLICA"),
     }
+    DATABASE_ROUTERS = ["django_local_read_write_replica.support.db_router.DatabaseRouter"]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -102,7 +104,7 @@ LOGGING = {
         }
     },
     "loggers": {
-        "": {"level": "INFO", "handlers": ["console"]},
+        "": {"level": "DEBUG", "handlers": ["console"]},
         "app": {"level": "INFO", "handlers": ["console"], "propagate": False},
         "django": {"level": "INFO", "propagate": False, "handlers": ["console"]},
         "django.request": {
