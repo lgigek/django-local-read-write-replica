@@ -62,6 +62,15 @@ DATABASES = {
         "PASSWORD": os.environ.get("DB_PASSWORD"),
     }
 }
+if os.getenv("USE_REPLICA"):
+    DATABASES["replica"] = {
+        "ENGINE": os.getenv("DB_ENGINE_REPLICA"),
+        "NAME": os.getenv("DB_DATABASE_REPLICA"),
+        "USER": os.getenv("DB_USER_REPLICA"),
+        "HOST": os.getenv("DB_HOST_REPLICA"),
+        "PORT": os.getenv("DB_PORT_REPLICA"),
+        "PASSWORD": os.getenv("DB_PASSWORD_REPLICA"),
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
