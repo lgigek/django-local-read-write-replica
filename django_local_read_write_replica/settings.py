@@ -63,7 +63,7 @@ DATABASES = {
         "PASSWORD": os.environ.get("DB_PASSWORD"),
     }
 }
-if eval_env_as_bool(os.getenv("USE_REPLICA")):
+if eval_env_as_bool(os.getenv("DB_USE_REPLICA")):
     DATABASES["replica"] = {
         "ENGINE": os.getenv("DB_ENGINE_REPLICA"),
         "NAME": os.getenv("DB_DATABASE_REPLICA"),
