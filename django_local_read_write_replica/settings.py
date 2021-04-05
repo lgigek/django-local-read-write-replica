@@ -4,6 +4,7 @@ from pathlib import Path
 from pythonjsonlogger.jsonlogger import JsonFormatter
 
 from django_local_read_write_replica.apps.my_app.apps import MyAppConfig
+from django_local_read_write_replica.support.utils import eval_env_as_bool
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -62,7 +63,7 @@ DATABASES = {
         "PASSWORD": os.environ.get("DB_PASSWORD"),
     }
 }
-if os.getenv("USE_REPLICA"):
+if eval_env_as_bool(os.getenv("USE_REPLICA")):
     DATABASES["replica"] = {
         "ENGINE": os.getenv("DB_ENGINE_REPLICA"),
         "NAME": os.getenv("DB_DATABASE_REPLICA"),
