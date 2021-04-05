@@ -1,3 +1,8 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class DatabaseRouter:
     """
     A router to control all database operations on models in the
@@ -8,12 +13,14 @@ class DatabaseRouter:
         """
         Always read from REPLICA database
         """
+        logger.debug("Using read replica")
         return "replica"
 
     def db_for_write(self, model, **hints):
         """
         Always write to DEFAULT database
         """
+        logger.debug("Using write replica")
         return "default"
 
     def allow_relation(self, obj1, obj2, **hints):
