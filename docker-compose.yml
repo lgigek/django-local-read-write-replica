@@ -52,6 +52,29 @@ services:
         "./start.sh",
       ]
 
+  local-development:
+    build:
+      context: .
+      dockerfile: DockerfileDev
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - db-write
+      - db-read
+    ports:
+      - "${DJANGO_BIND_PORT}:${DJANGO_BIND_PORT}"
+    command:
+      [
+        "./wait-for-it.sh",
+        "${DB_HOST}:${DB_PORT}",
+        "-t",
+        "120",
+        "--",
+        "./start.sh",
+      ]
+
   tests:
     image: python:3.9-slim-buster
     env_file: .env
