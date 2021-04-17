@@ -1,0 +1,10 @@
+[run]
+omit =
+    django_local_read_write_replica/asgi.py
+    django_local_read_write_replica/wsgi.py
+    django_local_read_write_replica/settings.py
+    django_local_read_write_replica/support/db_router.py
+    **/migrations/**.py
+
+[report]
+show_missing = True

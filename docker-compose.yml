@@ -51,3 +51,15 @@ services:
         "--",
         "./start.sh",
       ]
+
+  tests:
+    image: python:3.9-slim-buster
+    env_file: .env
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      - db-write
+      - db-read
+    command: >
+      sh -c "pip install tox && tox"

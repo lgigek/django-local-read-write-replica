@@ -71,6 +71,7 @@ if eval_env_as_bool(os.getenv("DB_USE_REPLICA")):
         "HOST": os.getenv("DB_HOST_REPLICA"),
         "PORT": os.getenv("DB_PORT_REPLICA"),
         "PASSWORD": os.getenv("DB_PASSWORD_REPLICA"),
+        "TEST": {"MIRROR": "default"},
     }
     DATABASE_ROUTERS = ["django_local_read_write_replica.support.db_router.DatabaseRouter"]
 
